@@ -4,10 +4,15 @@ const {Server} = require('socket.io');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const Message = require('./models/Message');
+const authRoutes = require('./routes/authRoutes');
 
 const app = express();
 
+app.use(express.json());
+app.use('/talkbit/auth', authRoutes);
+
 app.use(cors());
+
 
 const server = http.createServer(app);
 
